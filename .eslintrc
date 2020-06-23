@@ -9,7 +9,11 @@
     "semi": "off",
     "arrow-parens": "off",
     "comma-dangle": "off",
-    "require-jsdoc": "off"
+    "require-jsdoc": "off",
+    "linebreak-style": "off",
+    "padded-blocks": "off",
+    "no-mixed-spaces-and-tabs":"off",
+    "no-tabs": "off"
   },
   "extends": [
     "eslint:recommended",
