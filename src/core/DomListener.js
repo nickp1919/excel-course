@@ -1,6 +1,7 @@
 import {capitalize} from '@core/utils'
 
 export class DomListener {
+
   constructor($root, listeners = []) {
     if (!$root) {
       throw new Error(`No $root provided for DomListener`)
@@ -17,12 +18,17 @@ export class DomListener {
             `Method ${method} is not implemented`
         )
       }
-      this.$root.on(listener, this[method].bind(this))
+      this[method] = this[method].bind(this)
+
+      this.$root.on(listener, this[method])
     })
   }
 
   removeDomListeners() {
-    // realize
+    this.listeners.forEach(listener => {
+      const method = getMethodName(listener)
+      this.$root.on(listener, this[method])
+    })
   }
 }
 
